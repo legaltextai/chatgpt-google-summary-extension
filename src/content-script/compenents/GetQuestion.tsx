@@ -31,6 +31,20 @@ export default async function getQuestion() {
 
   const providerConfigs = await getProviderConfigs()
 
+  // CourtListener Opinion
+  if (siteName === 'courtlistener') {
+    const opinionElement = getPossibleElementByQuerySelector(siteConfig.contentContainerQuery || [])
+    if (!opinionElement) return null
+
+    const opinionText = opinionElement.textContent?.trim()
+    if (!opinionText) return null
+
+    const caseTitle = document.querySelector('h2')?.textContent?.trim() || document.title
+    const prompt = `Please provide a concise summary of this legal opinion, focusing on the key facts, issues, and holdings. Case: ${caseTitle}\n\nOpinion text: ${opinionText}`
+
+    return { question: prompt }
+  }
+
   // PubMed
   if (siteName === 'pubmed') {
     if (

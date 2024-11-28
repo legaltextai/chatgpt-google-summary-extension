@@ -16,16 +16,14 @@ export interface SearchEngine {
 }
 
 export const config: Record<string, SearchEngine> = {
-  google: {
-    inputQuery: ["input[name='q']"],
-    sidebarContainerQuery: ['#rhs'],
-    appendContainerQuery: ['#rcnt'],
-    extabarContainerQuery: ['#extabar'],
-    contentContainerQuery: [],
-    name: 'gogole',
-    siteName: 'Google',
-    siteValue: 'google',
-    regex: '(^(www.)?google.)',
+  courtlistener: {
+    inputQuery: [],
+    sidebarContainerQuery: ['.col-md-3'],
+    appendContainerQuery: ['.col-md-9'],
+    contentContainerQuery: ['[class="opinion-content"]'],
+    siteName: 'CourtListener',
+    siteValue: 'courtlistener',
+    regex: '(^(www.)?courtlistener.com/opinion/)'
   },
   bing: {
     inputQuery: ["[name='q']"],
